@@ -15,7 +15,7 @@ const HomePage = (props) => {
   const navigate = useNavigate()
   const getIdByName = async (name) => {
     const product = await axios.get(
-      `http://localhost:8000/api/products/name/${name}`
+      `https://spark-mart-backend.vercel.app/api/products/name/${name}`
     )
     const idByname = product.data[0]._id
     navigate(`product/${idByname}`)
@@ -24,7 +24,7 @@ const HomePage = (props) => {
   useEffect(() => {
     const getProducts = async () => {
       setIsLoading(true)
-      const response = await axios.post("http://localhost:8000/api/products", {
+      const response = await axios.post("https://spark-mart-backend.vercel.app/api/products", {
         pageNo: pageNo,
       })
       setProducts(response.data)
@@ -34,7 +34,6 @@ const HomePage = (props) => {
   }, [pageNo])
 
   const goToPrevSlide = () => {
-    console.log("clickedd")
     setCurrentSlide((prevSlide) =>
       prevSlide === 0 ? numSlides - 1 : prevSlide - 1
     )

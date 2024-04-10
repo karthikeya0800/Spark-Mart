@@ -25,7 +25,7 @@ const CartPage = (props) => {
 
   const handlePayment = async () => {
     setPayloading(true)
-    await axios.post("http://localhost:8000/api/users/addToOrders", {
+    await axios.post("https://spark-mart-backend.vercel.app/api/users/addToOrders", {
       userId: localStorage.userId,
       cart: JSON.parse(localStorage.cart),
     })
@@ -44,7 +44,7 @@ const CartPage = (props) => {
     setActiveProduct(product)
     setQtyLoading(true)
     const response = await axios.post(
-      "http://localhost:8000/api/users/addToCart",
+      "https://spark-mart-backend.vercel.app/api/users/addToCart",
       {
         userId: localStorage.userId,
         cart: product,
@@ -59,7 +59,7 @@ const CartPage = (props) => {
     setQtyLoading(true)
     setActiveProduct(product)
     const response = await axios.post(
-      "http://localhost:8000/api/users/removeFromCart",
+      "https://spark-mart-backend.vercel.app/api/users/removeFromCart",
       {
         userId: localStorage.userId,
         cart: product,

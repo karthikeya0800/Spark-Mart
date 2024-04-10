@@ -10,7 +10,7 @@ const MyOrders = () => {
     const myOrders = async () => {
       setLoading(true)
       const response = await axios.get(
-        "http://localhost:8000/api/users/myorders/" + localStorage.userId
+        "https://spark-mart-backend.vercel.app/api/users/myorders/" + localStorage.userId
       )
       setOrders(response.data.orders.reverse())
       setLoading(false)

@@ -113,8 +113,8 @@ router.post("/addToOrders", async (req, res) => {
   res.status(201).json({ message: "Order Placed Successfully" })
 })
 
-router.get("/myorders/:id", async (req, res) => {
-  const user = await User.findById(req.params.id)
+router.post("/myorders", async (req, res) => {
+  const user = await User.findById(req.body.userId)
   res.json({ orders: user.orders })
 })
 

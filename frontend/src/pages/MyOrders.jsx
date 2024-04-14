@@ -9,8 +9,9 @@ const MyOrders = () => {
   useEffect(() => {
     const myOrders = async () => {
       setLoading(true)
-      const response = await axios.get(
-        "https://spark-mart-backend.vercel.app/api/users/myorders/" + localStorage.userId
+      const response = await axios.post(
+        "https://spark-mart-backend.vercel.app/api/users/myorders/",
+        { userId: localStorage.userId }
       )
       setOrders(response.data.orders.reverse())
       setLoading(false)
@@ -34,14 +35,21 @@ const MyOrders = () => {
                 Product
               </div>
               <p className='font-normal text-xl leading-8 text-gray-500 flex items-center justify-between'>
-                <span className='w-full max-w-[200px] text-center'>Quantity</span>
-                <span className='w-full max-w-[260px] text-center'>Ordered On</span>
+                <span className='w-full max-w-[200px] text-center'>
+                  Quantity
+                </span>
+                <span className='w-full max-w-[260px] text-center'>
+                  Ordered On
+                </span>
                 <span className='w-full max-w-[200px] text-center'>Total</span>
               </p>
             </div>
             {orders.map((product) => {
               return (
-                <div key={product._id} className='grid grid-cols-1 lg:grid-cols-2 min-[550px]:gap-6 border-t border-gray-200 py-6'>
+                <div
+                  key={product._id}
+                  className='grid grid-cols-1 lg:grid-cols-2 min-[550px]:gap-6 border-t border-gray-200 py-6'
+                >
                   <div className='flex items-center flex-col min-[550px]:flex-row gap-3 min-[550px]:gap-6 w-full max-xl:justify-center max-xl:max-w-xl max-xl:mx-auto'>
                     <div className='img-box'>
                       <img
